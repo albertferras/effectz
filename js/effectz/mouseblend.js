@@ -9,14 +9,47 @@ var MouseBlend =  function() {
   this.ctx = null;
 
   this.cursor_size = 40;
+  this.speed_log_limit = 20;
 
   this.last_p = null;
   this.last_size = null;
+  
+  this.speed_log = null;
+  this.speed_i = null;
+  
 
   this.init = function() {
+      if (CANVAS_ASPECT_RATIO > 1) {
+          this.width = 512;
+          this.height = 512 / CANVAS_ASPECT_RATIO;
+      } else {
+          this.width = 512 * CANVAS_ASPECT_RATIO;
+          this.height = 512;
+      }
+
       this.canvas = createCanvas(this.width, this.height);
       this.ctx = this.canvas.getContext("2d");
+      
+      // set speed log
+      this.speed_log = [];
+      for (i = 0; i < this.speed_log_limit; i++) this.speed_log.push(1);
+      this.speed_i = 0;
       return;
+  }
+
+  this.log_speed = function(new_speed) {
+      // Log new speed
+      this.speed_log[this.speed_i] = new_speed;
+      this.speed_i = (this.speed_i + 1) % this.speed_log_limit;
+  }
+
+  this.avg_speed = function() {
+      // Returns the average of last X wanted sizes
+      sum = 0;
+      for (i = 0; i < this.speed_log.length; i++){
+          sum += this.speed_log[i]
+      }
+      return sum/this.speed_log.length;
   }
 
   this.render = function(time) {
@@ -32,9 +65,13 @@ var MouseBlend =  function() {
           this.last_p = [x, y];
           this.last_size = 1;
       }
+      // new wanted size
       n = dist(x, y, this.last_p[0], this.last_p[1]);
       n = Math.max(1, Math.log(n) * 1.5);
+      this.log_speed(n);
 
+      // Smooth new size based on average of last X wanted sizes
+      n = this.avg_speed();
       
       // fade screen
       c2.fillStyle = "black";
