@@ -18,7 +18,8 @@ var EFFECT_LIST = [{"name": "Plasma", "class": Plasma},
                    {"name": "Plasma2", "class": Plasma2},
                    {"name": "MouseBlend", "class": MouseBlend},
                    {"name": "RotNeedles", "class": RotNeedles},
-                   {"name": "RotSquare", "class": RotSquare}];
+                   {"name": "RotSquare", "class": RotSquare},
+                   {"name": "RotBox", "class": RotBox}];
 var DEFAULT_EFFECT_IDX = 4;
 
 
@@ -113,6 +114,7 @@ function onloadHandler()
 }
 
 function change_effect(new_effect_id) {
+    time_cycles = 0;
     // clear current canvas
     targetContext.clearRect(0, 0, targetCanvas.width, targetCanvas.height);
 
