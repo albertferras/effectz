@@ -1,0 +1,96 @@
+/* Color palette http://www.colourlovers.com/palette/3886445/Blueboard */
+
+/* ------ MAIN GUI ------ */
+body {
+	background-color: #CDBCA6;
+}
+
+#effectz {
+	font-family: Verdana;
+	border: 1px solid black;
+}
+
+.efHeader {
+	background-color: #384454;
+	padding: 10px;
+	color: white;
+}
+
+.efHeader2 {
+	background-color: #47576B;
+	padding: 8px;
+	color: white;
+}
+
+#efMain {
+	position: relative;
+	background-color: #EFEBE2;
+	height: 90%;
+}
+
+/*  CANVAS   */
+#efCanvas {
+	margin-right: 500px;  /* must be same as efMenu width (I DONT LIKE THIS) */ 
+}
+#efCanvas canvas{
+	background-color: #86A69A;
+	cursor: crosshair;
+	
+}
+
+
+/*  CONFIG MENU */
+#efList ul {
+	margin: 0;
+	padding: 0;
+}
+
+#efList ul li {
+	list-style-type: none;
+	padding: 8px 16px;
+	border-left: 10px solid transparent;
+}
+
+#efList ul li:hover {
+	background-color: #BBCAEB;
+	/*color: blue;*/
+	cursor: pointer;
+}
+
+#efList ul li.selected {
+	background-color: #5484ED;
+	border-left-color: #80A2EC;
+	color: white;
+}
+
+
+#efMenu {
+	float: right;
+	width: 500px;
+	background-color: white;
+}
+
+#efMenu table {
+	padding: 8px;
+	width: 100%;
+}
+
+/* config sliders - text on the right (avoid changing element width/height when text length changes) */
+.efopt_title {
+	width: 140px;
+}
+
+.efopt_input {
+	padding: 0 20px;
+}
+
+.efopt_input input {
+	width: 100%;
+}
+
+.efopt_format {
+	width: 80px;
+	max-width: 80px;
+	font-size: 0.8em;
+	white-space: nowrap;
+}
