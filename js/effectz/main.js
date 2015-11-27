@@ -19,8 +19,9 @@ var EFFECT_LIST = [{"name": "Plasma", "class": Plasma},
                    {"name": "MouseBlend", "class": MouseBlend},
                    {"name": "RotNeedles", "class": RotNeedles},
                    {"name": "RotSquare", "class": RotSquare},
-                   {"name": "RotBox", "class": RotBox}];
-var DEFAULT_EFFECT_IDX = 4;
+                   {"name": "RotBox", "class": RotBox},
+                   {"name": "Life", "class": Life}];
+var DEFAULT_EFFECT_IDX = 6;
 
 
 // Global vars (computed)
